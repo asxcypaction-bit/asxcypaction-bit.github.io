@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cypaction Pty Limited — Australian App Development</title>
+  <meta name="description" content="Cypaction Pty Limited is an Australian mobile app development company building intelligent, location-aware apps for travellers and explorers." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKEN SYSTEM ───────────────────────────────────────────────
+       Palette:
+         Stone White   #F7F6F3  — page background
+         Ink           #1A1A18  — headings, strong text
+         Slate         #4A4A47  — body text
+         Mist          #DDDBD5  — dividers, borders
+         Cypress       #2D5741  — brand accent (deep forest green, grounded, Australian)
+         Cypress Light #EBF2EE  — subtle tinted backgrounds
+         Amber         #C8892A  — warm highlight, used once
+    ──────────────────────────────────────────────────────────────── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --stone:   #F7F6F3;
+      --ink:     #1A1A18;
+      --slate:   #4A4A47;
+      --mist:    #DDDBD5;
+      --cypress: #2D5741;
+      --cy-lt:   #EBF2EE;
+      --amber:   #C8892A;
+      --max:     1120px;
+      --r:       3px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--stone);
+      color: var(--slate);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      color: var(--ink);
+      line-height: 1.18;
+    }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing: -0.015em; }
+    h3 { font-size: 1.2rem; }
+
+    p { max-width: 62ch; }
+    a { color: var(--cypress); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cypress);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    section { padding: clamp(4rem, 8vw, 7rem) 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 246, 243, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--cypress); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--slate);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--cypress); text-decoration: none; }
+
+    .nav-cta {
+      background: var(--cypress);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--r);
+      font-weight: 600 !important;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: #22432f !important; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(5rem, 10vw, 9rem) 0 clamp(4rem, 8vw, 7rem);
+      border-bottom: 1px solid var(--mist);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero h1 { margin-bottom: 1.5rem; }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 52ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--cypress);
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--r);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #22432f; text-decoration: none; }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--mist);
+      color: var(--slate);
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--r);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--cypress); color: var(--cypress); text-decoration: none; }
+
+    /* Signature element: a topographic contour illustration */
+    .hero-visual {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .topo-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--cy-lt);
+    }
+
+    .topo-wrap svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--mist);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .hero-badge .badge-label { font-size: 0.7rem; color: var(--slate); margin-bottom: 0.2rem; }
+    .hero-badge .badge-val { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--ink); }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--cy-lt);
+      border-top: 1px solid #c9ddd1;
+      border-bottom: 1px solid #c9ddd1;
+      padding: 3rem 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 2px 1fr 2px 1fr;
+      gap: 2rem;
+      align-items: center;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    .divider-v {
+      background: #c9ddd1;
+      height: 60px;
+      align-self: center;
+    }
+
+    .fact { text-align: center; }
+    .fact-val {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--cypress);
+      display: block;
+    }
+    .fact-label { font-size: 0.85rem; color: var(--slate); }
+
+    /* ── WHAT WE DO ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--mist);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-color: #c9ddd1;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--cy-lt);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-icon svg { width: 20px; height: 20px; stroke: var(--cypress); fill: none; stroke-width: 1.75; }
+
+    .service-card h3 { margin-bottom: 0.6rem; font-size: 1.05rem; }
+    .service-card p { font-size: 0.9rem; line-height: 1.65; color: var(--slate); max-width: none; }
+
+    /* ── FLAGSHIP PRODUCT ── */
+    .product {
+      background: var(--ink);
+      color: #d4d4d0;
+    }
+    .product h2 { color: #fff; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .product p { color: #b0b0ac; max-width: 52ch; }
+
+    .product-badge {
+      display: inline-block;
+      background: rgba(45, 87, 65, 0.4);
+      border: 1px solid rgba(45, 87, 65, 0.7);
+      color: #7ec49a;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .product h2 { margin-bottom: 1rem; }
+    .product p { margin-bottom: 1.5rem; }
+
+    .product-features {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .product-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #b0b0ac;
+    }
+
+    .product-features li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--cypress);
+      border-radius: 50%;
+      margin-top: 0.55em;
+      flex-shrink: 0;
+    }
+
+    /* Phone mockup */
+    .phone-mockup {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-frame {
+      width: 220px;
+      height: 440px;
+      background: #2a2a28;
+      border-radius: 32px;
+      border: 2px solid #3a3a38;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px #111;
+    }
+
+    .phone-screen {
+      position: absolute;
+      inset: 8px;
+      border-radius: 26px;
+      background: linear-gradient(160deg, #1c3528 0%, #0f2018 60%, #0a1810 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .phone-notch {
+      width: 60px;
+      height: 6px;
+      background: #111;
+      border-radius: 3px;
+      margin: 0 auto 1rem;
+    }
+
+    .phone-map-bg {
+      flex: 1;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-map-bg svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+    }
+
+    .phone-pin {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: var(--amber);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(200,137,42,0.3);
+    }
+
+    .phone-ui-bar {
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.6rem;
+      color: #8aad96;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── COMPANY ── */
+    .company-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .company-grid h2 { margin-bottom: 1.25rem; }
+    .company-grid p { margin-bottom: 1rem; }
+
+    .detail-list {
+      list-style: none;
+      margin-top: 2rem;
+      border-top: 1px solid var(--mist);
+    }
+
+    .detail-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--mist);
+      font-size: 0.875rem;
+    }
+
+    .detail-list .dl-key { color: var(--slate); }
+    .detail-list .dl-val { color: var(--ink); font-weight: 500; text-align: right; }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--cypress);
+      color: rgba(255,255,255,0.85);
+    }
+    .contact h2 { color: #fff; }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .contact p { color: rgba(255,255,255,0.75); max-width: 48ch; margin-bottom: 1.5rem; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--r);
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: rgba(255,255,255,0.5); }
+
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--cypress);
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--r);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      align-self: flex-start;
+    }
+    .btn-white:hover { background: #f0ede8; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--mist);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left { font-size: 0.85rem; color: var(--slate); }
+    .footer-left strong { color: var(--ink); }
+
+    .footer-right {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .footer-right a { color: var(--slate); }
+    .footer-right a:hover { color: var(--cypress); }
+
+    /* ── SECTION HEADER ── */
+    .section-header { margin-bottom: 3rem; }
+    .section-header .mono { margin-bottom: 0.75rem; display: block; }
+    .section-header h2 { margin-bottom: 1rem; }
+    .section-header p { color: var(--slate); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero-grid,
+      .product-grid,
+      .company-grid,
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .hero-visual { height: 280px; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .divider-v { display: none; }
+
+      .nav-links { display: none; }
+
+      .phone-mockup { order: -1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Cyp<span>action</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">What We Build</a></li>
+      <li><a href="#products">Our Apps</a></li>
+      <li><a href="#company">Company</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="about">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow mono">Australian App Development</span>
+        <h1>Building apps that help Australians explore further.</h1>
+        <p class="hero-sub">
+          Cypaction Pty Limited is an Australian software company developing intelligent, location-aware mobile applications. Our focus: apps that are genuinely useful in the field, built to the highest standards of reliability and design.
+        </p>
+        <div class="hero-actions">
+          <a href="#products" class="btn-primary">Our Current Projects</a>
+          <a href="#contact" class="btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="topo-wrap">
+          <!-- Topographic contour SVG — the signature element -->
+          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="topo-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#d4e8db"/>
+                <stop offset="100%" stop-color="#c0dbc9"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="400" fill="url(#topo-bg)"/>
+            <!-- contour lines -->
+            <g fill="none" stroke="#2D5741" stroke-opacity="0.18" stroke-width="1.2">
+              <ellipse cx="300" cy="200" rx="260" ry="160"/>
+              <ellipse cx="300" cy="200" rx="220" ry="130"/>
+              <ellipse cx="300" cy="200" rx="180" ry="104"/>
+              <ellipse cx="300" cy="200" rx="140" ry="80"/>
+              <ellipse cx="300" cy="200" rx="100" ry="58"/>
+              <ellipse cx="300" cy="200" rx="60" ry="36"/>
+              <ellipse cx="300" cy="200" rx="24" ry="16"/>
+            </g>
+            <!-- off-centre hills -->
+            <g fill="none" stroke="#2D5741" stroke-opacity="0.1" stroke-width="1">
+              <ellipse cx="130" cy="100" rx="120" ry="80"/>
+              <ellipse cx="130" cy="100" rx="80" ry="52"/>
+              <ellipse cx="130" cy="100" rx="40" ry="26"/>
+              <ellipse cx="490" cy="320" rx="140" ry="90"/>
+              <ellipse cx="490" cy="320" rx="90" ry="58"/>
+              <ellipse cx="490" cy="320" rx="44" ry="28"/>
+            </g>
+            <!-- summit dot -->
+            <circle cx="300" cy="200" r="4" fill="#2D5741" fill-opacity="0.6"/>
+            <!-- dashed grid lines -->
+            <g stroke="#2D5741" stroke-opacity="0.07" stroke-width="0.8" stroke-dasharray="4 8">
+              <line x1="0" y1="100" x2="600" y2="100"/>
+              <line x1="0" y1="200" x2="600" y2="200"/>
+              <line x1="0" y1="300" x2="600" y2="300"/>
+              <line x1="150" y1="0" x2="150" y2="400"/>
+              <line x1="300" y1="0" x2="300" y2="400"/>
+              <line x1="450" y1="0" x2="450" y2="400"/>
+            </g>
+          </svg>
+
+          <div class="hero-badge">
+            <div class="badge-label">In Development</div>
+            <div class="badge-val">AusTravla &amp; MarketStalls</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT STRIP ── -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="fact">
+      <span class="fact-val">Australian</span>
+      <span class="fact-label">Owned &amp; operated</span>
+    </div>
+    <div class="divider-v"></div>
+    <div class="fact">
+      <span class="fact-val">iOS &amp; Android</span>
+      <span class="fact-label">Cross-platform development</span>
+    </div>
+    <div class="divider-v"></div>
+    <div class="fact">
+      <span class="fact-val">Privacy First</span>
+      <span class="fact-label">No ads. No data selling.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHAT WE BUILD ── -->
+<section id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="mono">What We Build</span>
+      <h2>Purpose-built mobile applications</h2>
+      <p>We design and develop mobile apps with a focus on real-world utility, offline capability, and clean, intuitive interfaces that work where users actually need them.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <h3>Location-Aware Apps</h3>
+        <p>Mapping, navigation, and location intelligence for apps that need to work in remote and regional Australia — including offline-first architectures.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        </div>
+        <h3>Cross-Platform Mobile</h3>
+        <p>A single codebase that deploys natively to both iOS and Android, built with Flutter for performance and consistency across devices.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3>Cloud-Backed Data</h3>
+        <p>Scalable, secure backend infrastructure using Australian-hosted cloud services, with real-time sync and robust data management for community-sourced content.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community Platforms</h3>
+        <p>Apps built around community contribution — user-submitted content, crowd-sourced data, review systems, and moderation tools that scale.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Privacy &amp; Compliance</h3>
+        <p>Built with Australian Privacy Act obligations in mind from day one. Our apps comply with Australian Privacy Principles and App Store guidelines.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>AI-Native Development</h3>
+        <p>We build AI into our development process and our products — enabling faster iteration, smarter features, and continuously improving user experiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section class="product" id="products">
+  <div class="container">
+
+    <div class="section-header" style="margin-bottom:4rem;">
+      <span class="mono" style="color:rgba(255,255,255,0.45);">What We're Building</span>
+      <h2 style="color:#fff; margin-top:0.75rem;">Two apps. Both in development.</h2>
+      <p style="color:#b0b0ac;">Cypaction currently has two mobile applications in active development, each targeting an underserved Australian market with a community-first approach.</p>
+    </div>
+
+    <!-- AusTravla -->
+    <div class="product-grid" style="margin-bottom:5rem; padding-bottom:5rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div>
+        <span class="product-badge">In Development · Travel &amp; Navigation</span>
+        <h2>AusTravla</h2>
+        <p>A comprehensive location resource for Australian travellers, 4WD enthusiasts, and road trippers. AusTravla surfaces the information you need — exactly when and where you need it.</p>
+        <ul class="product-features">
+          <li>Points of interest, rest areas, fuel stops &amp; camping sites</li>
+          <li>Community-contributed content &amp; real-time updates</li>
+          <li>Offline-capable maps for remote travel</li>
+          <li>Built specifically for Australian geography &amp; conditions</li>
+          <li>Available on iOS &amp; Android at launch</li>
+        </ul>
+      </div>
+
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-map-bg">
+              <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="280" fill="#0f2018"/>
+                <g stroke="#1e4030" stroke-width="1" fill="none" opacity="0.8">
+                  <line x1="0" y1="70" x2="200" y2="70"/>
+                  <line x1="0" y1="140" x2="200" y2="140"/>
+                  <line x1="0" y1="210" x2="200" y2="210"/>
+                  <line x1="50" y1="0" x2="50" y2="280"/>
+                  <line x1="100" y1="0" x2="100" y2="280"/>
+                  <line x1="150" y1="0" x2="150" y2="280"/>
+                </g>
+                <g stroke="#2a5040" stroke-width="2" fill="none">
+                  <path d="M 20 140 Q 80 120 100 140 Q 130 160 180 140"/>
+                  <path d="M 100 20 Q 110 80 100 140 Q 90 200 105 260"/>
+                </g>
+                <ellipse cx="60" cy="80" rx="30" ry="20" fill="#1a3828" opacity="0.6"/>
+                <ellipse cx="150" cy="190" rx="25" ry="18" fill="#1a3828" opacity="0.6"/>
+              </svg>
+              <div class="phone-pin"></div>
+            </div>
+            <div class="phone-ui-bar">▲ Winton Rest Area · 2.3 km</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MarketStalls -->
+    <div class="product-grid">
+      <div>
+        <span class="product-badge">In Development · Marketplace</span>
+        <h2>MarketStalls</h2>
+        <p>A dedicated marketplace connecting local market stall holders with customers across Australia. MarketStalls gives small vendors the online presence they need, and shoppers a single place to discover local markets and the people who run them.</p>
+        <ul class="product-features">
+          <li>Stall holder profiles, product listings &amp; market schedules</li>
+          <li>Search by location, market, or product category</li>
+          <li>Community reviews and stallholder ratings</li>
+          <li>Built for Australia's thriving local market scene</li>
+          <li>Available on iOS &amp; Android at launch</li>
+        </ul>
+      </div>
+
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen" style="background: linear-gradient(160deg, #2a1f0f 0%, #1a1208 60%, #100d05 100%);">
+            <div class="phone-notch"></div>
+            <div class="phone-map-bg">
+              <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="280" fill="#1a1208"/>
+                <!-- market stall grid -->
+                <g fill="#2a1f0f" stroke="#3a2f18" stroke-width="1">
+                  <rect x="15" y="30" width="70" height="55" rx="4"/>
+                  <rect x="115" y="30" width="70" height="55" rx="4"/>
+                  <rect x="15" y="110" width="70" height="55" rx="4"/>
+                  <rect x="115" y="110" width="70" height="55" rx="4"/>
+                  <rect x="15" y="190" width="70" height="55" rx="4"/>
+                  <rect x="115" y="190" width="70" height="55" rx="4"/>
+                </g>
+                <!-- stall awnings -->
+                <g fill="#C8892A" opacity="0.7">
+                  <rect x="15" y="30" width="70" height="10" rx="4"/>
+                  <rect x="115" y="110" width="70" height="10" rx="4"/>
+                  <rect x="15" y="190" width="70" height="10" rx="4"/>
+                </g>
+                <g fill="#2D5741" opacity="0.7">
+                  <rect x="115" y="30" width="70" height="10" rx="4"/>
+                  <rect x="15" y="110" width="70" height="10" rx="4"/>
+                  <rect x="115" y="190" width="70" height="10" rx="4"/>
+                </g>
+              </svg>
+            </div>
+            <div class="phone-ui-bar" style="color:#c8a86a;">⊙ 14 stalls near you</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── COMPANY INFO ── -->
+<section id="company">
+  <div class="container">
+    <div class="company-grid">
+      <div>
+        <span class="mono" style="display:block; margin-bottom:0.75rem;">The Company</span>
+        <h2>An Australian company, building for Australians.</h2>
+        <p>Cypaction Pty Limited is an Australian-registered company focused on mobile application development. We are an AI-native business — using the latest tools and workflows to build high-quality software efficiently and responsibly.</p>
+        <p>We operate with a clear set of values: trust, integrity, and authenticity. Our products are built without advertising, and we do not sell user data. Ever.</p>
+        <p style="margin-bottom:0;">If you're interested in what we're building, or would like to discuss a project, we'd love to hear from you.</p>
+      </div>
+
+      <div>
+        <ul class="detail-list">
+          <li>
+            <span class="dl-key">Legal name</span>
+            <span class="dl-val">Cypaction Pty Limited</span>
+          </li>
+          <li>
+            <span class="dl-key">Structure</span>
+            <span class="dl-val">Australian Proprietary Limited</span>
+          </li>
+          <li>
+            <span class="dl-key">Industry</span>
+            <span class="dl-val">Mobile Application Development</span>
+          </li>
+          <li>
+            <span class="dl-key">Country of operation</span>
+            <span class="dl-val">Australia</span>
+          </li>
+          <li>
+            <span class="dl-key">Current project</span>
+            <span class="dl-val">AusTravla, MarketStalls (both in development)</span>
+          </li>
+          <li>
+            <span class="dl-key">Platforms</span>
+            <span class="dl-val">iOS &amp; Android</span>
+          </li>
+          <li>
+            <span class="dl-key">Data hosting</span>
+            <span class="dl-val">Australia-based</span>
+          </li>
+          <li>
+            <span class="dl-key">Advertising</span>
+            <span class="dl-val">None — ever</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <span class="mono" style="color: rgba(255,255,255,0.5); display:block; margin-bottom:0.75rem;">Get in Touch</span>
+        <h2>Let's talk.</h2>
+        <p>Whether you're interested in AusTravla or MarketStalls, want to discuss a development project, or simply want to know more about what we're building — we'd love to hear from you.</p>
+        <p style="font-size:0.875rem;">We respond to all enquiries within five business days.</p>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit" class="btn-white">Send Message</button>
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:0.25rem; margin-bottom:0;">Your information is handled in accordance with our <a href="privacy.html" style="color:rgba(255,255,255,0.65);">Privacy Policy</a>.</p>
+        <p id="form-msg" style="font-size:0.8rem; color:rgba(255,255,255,0.6); display:none;"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Cypaction Pty Limited</strong> &nbsp;·&nbsp; Australian App Development &nbsp;·&nbsp; &copy; 2026
+        <div style="margin-top:0.35rem; font-size:0.75rem; color:#999;">This site collects standard web server logs (IP address, browser type, pages visited) for security and performance. See our <a href="privacy.html" style="color:#999;">Privacy Policy</a> for details.</div>
+      </div>
+      <div class="footer-right">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#products">Our Apps</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    msg.textContent = 'Thanks for your message — we\'ll be in touch shortly.';
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
