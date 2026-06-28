@@ -4,208 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Cypaction Pty Limited</title>
-  <meta name="description" content="Privacy Policy for Cypaction Pty Limited. How we handle personal information collected through our website and business activities." />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --stone: #F7F6F3; --ink: #1A1A18; --slate: #4A4A47; --mist: #DDDBD5;
-      --cypress: #2D5741; --cy-lt: #EBF2EE; --max: 780px;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--stone); color: var(--slate); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
-    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; color: var(--ink); line-height: 1.2; }
-    h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
-    h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-top: 2.5rem; border-top: 1px solid var(--mist); }
-    h3 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--ink); margin-top: 1.25rem; margin-bottom: 0.4rem; }
-    p { margin-bottom: 1rem; }
-    ul, ol { margin: 0.75rem 0 1rem 1.5rem; }
-    li { margin-bottom: 0.4rem; }
+    :root { --stone: #F7F6F3; --ink: #1A1A18; --slate: #4A4A47; --mist: #DDDBD5; --cypress: #2D5741; }
+    html, body { height: 100%; }
+    body { background: var(--stone); color: var(--slate); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem; }
+    .card { max-width: 540px; width: 100%; text-align: center; }
+    .logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: var(--ink); margin-bottom: 2rem; }
+    .logo span { color: var(--cypress); }
+    h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 1rem; }
+    p { font-size: 0.95rem; color: var(--slate); margin-bottom: 1rem; }
     a { color: var(--cypress); }
-    strong { color: var(--ink); font-weight: 600; }
-
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,246,243,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--mist); }
-    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem,4vw,3rem); height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--cypress); }
-    .nav-back { font-size: 0.875rem; color: var(--slate); text-decoration: none; }
-    .nav-back:hover { color: var(--cypress); }
-
-    .content { max-width: var(--max); margin: 0 auto; padding: clamp(1.25rem,4vw,3rem); padding-top: 2.5rem; padding-bottom: 5rem; }
-
-    .meta { font-size: 0.8rem; color: var(--slate); margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
-
-    .toc { background: var(--cy-lt); border: 1px solid #c9ddd1; border-radius: 4px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
-    .toc p { font-size: 0.8rem; font-weight: 600; color: var(--cypress); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
-    .toc ol { margin-left: 1.25rem; }
-    .toc li { font-size: 0.875rem; margin-bottom: 0.3rem; }
-    .toc a { color: var(--cypress); text-decoration: none; }
-    .toc a:hover { text-decoration: underline; }
-
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
-    th { background: var(--cy-lt); color: var(--ink); font-weight: 600; text-align: left; padding: 0.6rem 0.75rem; border: 1px solid var(--mist); }
-    td { padding: 0.6rem 0.75rem; border: 1px solid var(--mist); vertical-align: top; }
-    tr:nth-child(even) td { background: #fafaf8; }
-
-    footer { border-top: 1px solid var(--mist); padding: 2rem clamp(1.25rem,4vw,3rem); font-size: 0.825rem; color: var(--slate); text-align: center; }
-    footer a { color: var(--slate); }
-    footer p + p { margin-top: 0.4rem; }
+    .back { margin-top: 2rem; font-size: 0.875rem; }
+    footer { text-align: center; padding: 1.5rem; font-size: 0.75rem; color: #aaa; border-top: 1px solid var(--mist); }
   </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Cyp<span>action</span></a>
-    <a href="index.html" class="nav-back">← Back to home</a>
+<main>
+  <div class="card">
+    <div class="logo">Cyp<span>action</span></div>
+    <h1>Privacy Policy</h1>
+    <p>Cypaction Pty Limited is committed to handling personal information in accordance with the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles.</p>
+    <p>This website collects only the information you provide when contacting us via email, and standard web server logs. This information is used solely to respond to your enquiry.</p>
+    <p>We do not sell personal information. We do not use advertising technology on this site.</p>
+    <p>For privacy enquiries or to request access to your information, contact us at <a href="mailto:hq@cypaction.org">hq@cypaction.org</a>. We will respond within 5 business days.</p>
+    <p>For complaints unresolved by us, contact the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
+    <p class="back"><a href="index.html">← Back</a></p>
   </div>
-</nav>
-
-<div class="content">
-
-  <h1>Privacy Policy</h1>
-  <div class="meta">
-    <span><strong>Entity:</strong> Cypaction Pty Limited (ACN 008 650 664)</span>
-    <span><strong>Version:</strong> 1.0-DRAFT</span>
-    <span><strong>Last updated:</strong> [DATE — confirm with solicitor]</span>
-  </div>
-
-  <div class="toc">
-    <p>Contents</p>
-    <ol>
-      <li><a href="#who">Who we are</a></li>
-      <li><a href="#scope">Scope of this policy</a></li>
-      <li><a href="#what">What personal information we collect</a></li>
-      <li><a href="#how">How we collect personal information</a></li>
-      <li><a href="#why">Why we collect personal information</a></li>
-      <li><a href="#overseas">Overseas disclosure</a></li>
-      <li><a href="#security">How we protect your information</a></li>
-      <li><a href="#access">Your rights — access, correction and deletion</a></li>
-      <li><a href="#breaches">Data breaches</a></li>
-      <li><a href="#changes">Changes to this policy</a></li>
-      <li><a href="#complaints">Complaints</a></li>
-      <li><a href="#contact">Contact us</a></li>
-    </ol>
-  </div>
-
-  <h2 id="who">1. Who we are</h2>
-  <p>Cypaction Pty Limited (ACN 008 650 664, ABN 22 008 650 664) (<strong>"Cypaction"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong>) is an Australian mobile application development company.</p>
-  <p>We are committed to handling personal information responsibly and in accordance with the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs) in Schedule 1 of that Act.</p>
-  <p>Cypaction may in the future transfer the operation of individual apps to wholly-owned subsidiaries. If that occurs, those subsidiaries will publish their own privacy policies covering their specific apps and data handling. This policy covers Cypaction Pty Limited as the corporate entity only.</p>
-
-  <h2 id="scope">2. Scope of this policy</h2>
-  <p>This policy applies to personal information collected by Cypaction Pty Limited through:</p>
-  <ul>
-    <li>Our company website at <strong>cypaction.org</strong> (and any associated subdomains)</li>
-    <li>Direct business communications with us — including enquiries, support requests, and contractor or supplier contact</li>
-    <li>Our general business operations as a mobile app development company</li>
-  </ul>
-  <p>This policy does <strong>not</strong> cover the individual mobile applications we develop (such as AusTravla or MarketStalls). Each application will have its own privacy policy published on its own website, governing how personal information is collected and handled within that app.</p>
-  <p>This policy is written in Australian English and governed by Australian law. We do not apply foreign privacy frameworks (such as the GDPR or CCPA) by default.</p>
-
-  <h2 id="what">3. What personal information we collect</h2>
-  <p>In operating our company website and running our business, we may collect the following types of personal information:</p>
-  <ul>
-    <li><strong>Contact details</strong> — name, email address, and any other information you voluntarily provide when contacting us via our website or email</li>
-    <li><strong>Business contact information</strong> — name, business name, email, and phone number of contractors, suppliers, and professional contacts</li>
-    <li><strong>Correspondence</strong> — the content of emails or messages you send us</li>
-    <li><strong>Website usage data</strong> — standard web server logs (IP address, browser type, pages visited, time of visit) collected automatically when you visit our website</li>
-  </ul>
-  <p>We do not collect sensitive information (as defined in the <em>Privacy Act 1988</em>, including health information, racial or ethnic origin, political opinions, or biometric data) through our website or business communications. We do not operate advertising technology, behavioural tracking, or user profiling on our website.</p>
-
-  <h2 id="how">4. How we collect personal information</h2>
-  <p>We collect personal information:</p>
-  <ul>
-    <li><strong>Directly from you</strong> — when you contact us via our website contact form, email, or other direct communication</li>
-    <li><strong>Automatically</strong> — standard web server logs when you visit our website (see section 3)</li>
-    <li><strong>In the course of business</strong> — when engaging contractors, suppliers, or professional service providers</li>
-  </ul>
-  <p>We do not purchase personal information from third-party data brokers.</p>
-
-  <h2 id="why">5. Why we collect personal information</h2>
-  <p>We collect and use personal information only for the purposes for which it was collected, or directly related purposes you would reasonably expect (APP 6). Those purposes are:</p>
-  <ul>
-    <li>Responding to your enquiries and support requests</li>
-    <li>Managing our business relationships with contractors and suppliers</li>
-    <li>Operating and improving our website</li>
-    <li>Communicating with you about our company and the products we are developing, where you have expressed interest</li>
-    <li>Complying with our legal obligations</li>
-  </ul>
-  <p><strong>We do not sell personal information.</strong> We do not share personal information with third parties for their own marketing purposes. We do not display advertising on our website.</p>
-
-  <h2 id="overseas">6. Overseas disclosure (APP 8)</h2>
-  <p>Our website is hosted via services that may store data outside Australia. The following third-party providers may receive or process information collected through our website:</p>
-  <table>
-    <thead><tr><th>Provider</th><th>Purpose</th><th>Location(s)</th></tr></thead>
-    <tbody>
-      <tr><td>GitHub Pages (Microsoft)</td><td>Website hosting and access logs, including visitor IP addresses</td><td>United States — governed by GitHub Privacy Statement and Microsoft Data Protection Addendum</td></tr>
-      <tr><td>Google Workspace</td><td>Receiving and storing email enquiries</td><td>United States — governed by Google's Data Processing Terms and Google's Australian Privacy Principles whitepaper</td></tr>
-    </tbody>
-  </table>
-  <p>Under APP 8, Cypaction remains accountable for how these providers handle personal information about Australians. We take reasonable steps to use providers with appropriate privacy and security standards.</p>
-
-  <h2 id="security">7. How we protect your information (APP 11)</h2>
-  <p>We take reasonable steps to protect personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure. Our measures include:</p>
-  <ul>
-    <li>Encrypted transmission of all website communications (HTTPS)</li>
-    <li>Access controls limiting who within Cypaction can access personal information</li>
-    <li>Using reputable, security-conscious third-party service providers</li>
-  </ul>
-  <p>When personal information is no longer needed for the purpose for which it was collected, and we are not required by law to retain it, we will take reasonable steps to destroy or de-identify it.</p>
-
-  <h3>Retention periods</h3>
-  <table>
-    <thead><tr><th>Data type</th><th>Retention period</th></tr></thead>
-    <tbody>
-      <tr><td>Contact form enquiries (name, email, message)</td><td>6 months from the date of the enquiry, then deleted</td></tr>
-      <tr><td>Contractor and supplier contact records</td><td>6 months after the end of the business relationship, then deleted or de-identified</td></tr>
-      <tr><td>Email correspondence</td><td>6 months from the date of the last relevant communication, then deleted</td></tr>
-      <tr><td>Web server logs (IP address, browser type, pages visited)</td><td>6 months from collection, then deleted by the hosting provider (GitHub Pages / Microsoft)</td></tr>
-    </tbody>
-  </table>
-
-  <h2 id="access">8. Your rights — access, correction and deletion (APP 12 &amp; 13)</h2>
-  <p>You have the right to request access to the personal information we hold about you (APP 12), and to request correction of information that is inaccurate, out of date, incomplete, or misleading (APP 13).</p>
-  <p>You may also request that we delete personal information we hold about you, where we are not required by law to retain it.</p>
-  <p>To make any such request, contact us at <a href="mailto:hq@cypaction.org">hq@cypaction.org</a>. We will respond within 30 days. We will not charge you for making a request. You can also visit our <a href="support.html">Support page</a> for further guidance.</p>
-
-  <h2 id="breaches">9. Data breaches</h2>
-  <p>If we become aware of a data breach that is likely to result in serious harm to any individual whose personal information is involved, we will notify affected individuals and the Office of the Australian Information Commissioner (OAIC) as soon as practicable, in accordance with the Notifiable Data Breaches (NDB) scheme under Part IIIC of the <em>Privacy Act 1988</em> (Cth).</p>
-
-  <h2 id="changes">10. Changes to this policy</h2>
-  <p>We may update this Privacy Policy from time to time. The current version will always be published at <strong>cypaction.org/privacy.html</strong>. The date at the top of this policy indicates when it was last updated. Material changes will be notified on our website.</p>
-
-  <h2 id="complaints">11. Complaints</h2>
-  <p>If you have a concern or complaint about how we have handled your personal information, please contact us first at <a href="mailto:hq@cypaction.org">hq@cypaction.org</a>. We will acknowledge your complaint within 5 business days and aim to resolve it within 30 days.</p>
-  <p>If you are not satisfied with our response, you may lodge a complaint with the <strong>Office of the Australian Information Commissioner (OAIC)</strong>:</p>
-  <ul>
-    <li>Website: <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">www.oaic.gov.au</a></li>
-    <li>Phone: 1300 363 992</li>
-    <li>Post: GPO Box 5218, Sydney NSW 2001</li>
-  </ul>
-
-  <h2 id="contact">12. Contact us</h2>
-  <p>For all privacy enquiries, access or correction requests, or complaints:</p>
-  <p>
-    <strong>Cypaction Pty Limited</strong><br />
-    Email: <a href="mailto:hq@cypaction.org">hq@cypaction.org</a>
-  </p>
-  <p style="margin-top:2rem; font-size:0.825rem; color:var(--slate); border-top:1px solid var(--mist); padding-top:1.5rem;">
-    This policy is governed by the laws of Australia. Any dispute arising in connection with this policy will be subject to the jurisdiction of the Australian courts.
-  </p>
-
-</div>
-
-<footer>
-  <p><strong>Cypaction Pty Limited</strong> (ACN 008 650 664) &nbsp;·&nbsp;
-  <a href="index.html">Home</a> &nbsp;·&nbsp;
-  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-  <a href="support.html">Support</a> &nbsp;·&nbsp;
-  hq@cypaction.org</p>
-  <p style="font-size:0.75rem; color:#aaa;">This site collects standard web server logs (IP address, browser type, pages visited) for security and performance. &copy; 2026 Cypaction Pty Limited.</p>
-</footer>
-
+</main>
+<footer>&copy; 2026 Cypaction Pty Limited (ACN 008 650 664)</footer>
 </body>
 </html>
