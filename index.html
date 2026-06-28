@@ -916,7 +916,7 @@
         <input type="email" name="email" placeholder="Email address" required />
         <input type="text" name="subject" placeholder="Subject" />
         <textarea name="message" placeholder="Your message" required></textarea>
-        <button type="submit" class="btn-white">Send Message</button>
+        <button type="submit" class="btn-white" id="submit-btn">Send Message</button>
         <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:0.25rem; margin-bottom:0;">Your information is handled in accordance with our <a href="privacy.html" style="color:rgba(255,255,255,0.65);">Privacy Policy</a>.</p>
         <p id="form-msg" style="font-size:0.8rem; color:rgba(255,255,255,0.6); display:none;"></p>
       </form>
@@ -945,12 +945,41 @@
 </footer>
 
 <script>
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('submit-btn');
     const msg = document.getElementById('form-msg');
-    msg.style.display = 'block';
-    msg.textContent = 'Thanks for your message — we\'ll be in touch shortly.';
-    e.target.reset();
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    msg.style.display = 'none';
+
+    try {
+      const response = await fetch('https://formspree.io/f/mqevbqdo', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (response.ok) {
+        msg.style.display = 'block';
+        msg.style.color = 'rgba(255,255,255,0.8)';
+        msg.textContent = 'Thanks for your message — we\'ll be in touch within five business days.';
+        form.reset();
+      } else {
+        msg.style.display = 'block';
+        msg.style.color = '#ffaaaa';
+        msg.textContent = 'Something went wrong. Please email us directly at hq@cypaction.org';
+      }
+    } catch (err) {
+      msg.style.display = 'block';
+      msg.style.color = '#ffaaaa';
+      msg.textContent = 'Something went wrong. Please email us directly at hq@cypaction.org';
+    }
+
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
   }
 </script>
 
