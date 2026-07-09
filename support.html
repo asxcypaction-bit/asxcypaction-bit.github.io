@@ -3,38 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support — Cypaction Pty Limited</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Support &amp; Contact — Cypaction Pty Limited</title>
+  <meta name="description" content="Contact Cypaction Pty Limited. General enquiries, press, partnership, and support." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --stone: #F7F6F3; --ink: #1A1A18; --slate: #4A4A47; --mist: #DDDBD5; --cypress: #2D5741; }
-    html, body { height: 100%; }
-    body { background: var(--stone); color: var(--slate); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
-    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem; }
-    .card { max-width: 540px; width: 100%; text-align: center; }
-    .logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: var(--ink); margin-bottom: 2rem; }
-    .logo span { color: var(--cypress); }
-    h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 1rem; }
-    p { font-size: 0.95rem; color: var(--slate); margin-bottom: 1rem; }
+    :root {
+      --stone: #F7F6F3; --ink: #1A1A18; --slate: #4A4A47; --mist: #DDDBD5;
+      --cypress: #2D5741; --cy-lt: #EBF2EE; --r: 3px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--stone); color: var(--slate); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; color: var(--ink); line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+    h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    h3 { font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+    p { margin-bottom: 1rem; }
     a { color: var(--cypress); }
-    .back { margin-top: 2rem; font-size: 0.875rem; }
-    footer { text-align: center; padding: 1.5rem; font-size: 0.75rem; color: #aaa; border-top: 1px solid var(--mist); }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,246,243,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--mist); }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem,4vw,3rem); height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--cypress); }
+    .nav-back { font-size: 0.875rem; color: var(--slate); text-decoration: none; }
+    .nav-back:hover { color: var(--cypress); }
+    .page-hero { max-width: 1120px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem) 3rem; border-bottom: 1px solid var(--mist); }
+    .mono { font-family: monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cypress); display: block; margin-bottom: 0.75rem; }
+    .main { max-width: 1120px; margin: 0 auto; padding: 3rem clamp(1.25rem,4vw,3rem) 5rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+    .contact-card { background: #fff; border: 1px solid var(--mist); border-radius: 6px; padding: 1.75rem; transition: box-shadow 0.2s, border-color 0.2s; }
+    .contact-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-color: #c9ddd1; }
+    .contact-card.primary { background: var(--cy-lt); border-color: #b0d0ba; }
+    .card-icon { width: 38px; height: 38px; background: var(--cy-lt); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .contact-card.primary .card-icon { background: rgba(45,87,65,0.15); }
+    .card-icon svg { width: 18px; height: 18px; stroke: var(--cypress); fill: none; stroke-width: 1.75; }
+    .contact-card h3 { font-size: 1rem; font-family: 'DM Serif Display', serif; margin-bottom: 0.4rem; }
+    .contact-card p { font-size: 0.875rem; color: var(--slate); margin-bottom: 1rem; }
+    .card-link { display: inline-block; font-size: 0.875rem; font-weight: 600; color: var(--cypress); text-decoration: none; }
+    .card-link:hover { text-decoration: underline; }
+    .card-link.btn { background: var(--cypress); color: #fff; padding: 0.5rem 1.1rem; border-radius: var(--r); transition: background 0.15s; }
+    .card-link.btn:hover { background: #22432f; text-decoration: none; }
+    .response-note { display: block; font-size: 0.75rem; color: var(--slate); margin-top: 0.6rem; }
+    hr { border: none; border-top: 1px solid var(--mist); margin: 3rem 0; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .faq-item { padding: 1.5rem 0; border-bottom: 1px solid var(--mist); }
+    .faq-item:nth-child(odd) { padding-right: 2.5rem; }
+    .faq-item:nth-child(even) { padding-left: 2.5rem; border-left: 1px solid var(--mist); }
+    .faq-item h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .faq-item p { font-size: 0.875rem; color: var(--slate); margin: 0; }
+    .app-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .app-link-card { background: #fff; border: 1px solid var(--mist); border-radius: 6px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .app-link-card .app-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; }
+    .app-link-card .app-desc { font-size: 0.8rem; color: var(--slate); margin-top: 0.1rem; }
+    .app-link-card .status { font-size: 0.72rem; background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; padding: 0.15rem 0.5rem; border-radius: 2rem; white-space: nowrap; margin-left: 1rem; flex-shrink: 0; }
+    footer { border-top: 1px solid var(--mist); padding: 2rem clamp(1.25rem,4vw,3rem); font-size: 0.825rem; color: var(--slate); text-align: center; }
+    footer a { color: var(--slate); }
+    footer p + p { margin-top: 0.4rem; }
+    @media (max-width: 760px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .faq-item:nth-child(odd) { padding-right: 0; }
+      .faq-item:nth-child(even) { padding-left: 0; border-left: none; }
+      .app-links { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<main>
-  <div class="card">
-    <div class="logo">Cyp<span>action</span></div>
-    <h1>Support &amp; Contact</h1>
-    <p>For all enquiries, please email us directly at <a href="mailto:hq@cypaction.org">hq@cypaction.org</a>.</p>
-    <p>We respond to all messages within five business days.</p>
-    <p>To request access to, correction of, or deletion of personal information we hold about you, please email us with the subject line <strong>"Privacy Request"</strong>.</p>
-    <p class="back"><a href="index.html">← Back</a></p>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cyp<span>action</span></a>
+    <a href="index.html" class="nav-back">← Back to home</a>
   </div>
-</main>
-<footer>&copy; 2026 Cypaction Pty Limited (ACN 008 650 664)</footer>
+</nav>
+
+<div class="page-hero">
+  <span class="mono">Support &amp; Contact</span>
+  <h1>Get in touch.</h1>
+  <p style="font-size:1.1rem; margin-top:0.75rem; max-width:55ch; color:var(--slate);">We're a small, independent Australian company. We read every message and aim to respond within five business days.</p>
+</div>
+
+<div class="main">
+
+  <div class="contact-grid" style="margin-top:2.5rem;">
+    <div class="contact-card primary">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3>General enquiries</h3>
+      <p>For any question about Cypaction, our products in development, or our company — email is the best way to reach us.</p>
+      <a href="mailto:hq@cypaction.org" class="card-link btn">hq@cypaction.org</a>
+      <span class="response-note">We aim to reply within 5 business days.</span>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Partnerships &amp; business</h3>
+      <p>Interested in partnering with us, data sourcing arrangements, or other business enquiries? We'd love to hear from you.</p>
+      <a href="mailto:hq@cypaction.org?subject=Partnership Enquiry" class="card-link">Send a message →</a>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Press &amp; media</h3>
+      <p>For media enquiries, interview requests, or background information about Cypaction or our products in development.</p>
+      <a href="mailto:hq@cypaction.org?subject=Media Enquiry" class="card-link">Send a message →</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <div style="margin-bottom:3rem;">
+    <h2>Support for our apps</h2>
+    <p style="max-width:58ch;">Each of our mobile applications has its own dedicated website and support channel. If you're looking for help with a specific app, please visit that app's website directly once it's launched.</p>
+    <div class="app-links">
+      <div class="app-link-card">
+        <div>
+          <div class="app-name">AusTravla</div>
+          <div class="app-desc">Location resource for Australian travellers &amp; 4WDs</div>
+        </div>
+        <span class="status">In development</span>
+      </div>
+      <div class="app-link-card">
+        <div>
+          <div class="app-name">MarketStalls</div>
+          <div class="app-desc">Marketplace for Australian market stall holders</div>
+        </div>
+        <span class="status">In development</span>
+      </div>
+    </div>
+    <p style="font-size:0.875rem; margin-top:1.25rem; color:var(--slate);">While our apps are in development and don't yet have their own websites, you can direct any app-related enquiry to <a href="mailto:hq@cypaction.org">hq@cypaction.org</a> and we'll point you in the right direction.</p>
+  </div>
+
+  <hr />
+
+  <div style="margin-bottom:3rem;">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>What does Cypaction build?</h3>
+        <p>We're an Australian mobile app development company building iOS and Android applications using Flutter, with a focus on location-aware, community-driven apps for Australian users.</p>
+      </div>
+      <div class="faq-item">
+        <h3>When will your apps be available?</h3>
+        <p>Both AusTravla and MarketStalls are in active development. We don't have a confirmed public launch date yet. Contact us to register interest and we'll be in touch when they're ready.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you take on contract development work?</h3>
+        <p>At this stage, Cypaction is focused on building its own products. If you have a specific enquiry, feel free to email us and we can discuss further.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do you handle personal data?</h3>
+        <p>We take privacy seriously. Our Privacy Policy is available at <a href="privacy.html">cypaction.org/privacy.html</a>. Each app will have its own dedicated privacy policy once launched.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where is Cypaction based?</h3>
+        <p>Cypaction Pty Limited is an Australian company operating under Australian law. All personal data we collect is handled under the Australian Privacy Principles.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I request deletion of my data?</h3>
+        <p>Yes. Under the Australian Privacy Act, you have the right to access, correct, and request deletion of personal information we hold. Email <a href="mailto:hq@cypaction.org">hq@cypaction.org</a> with subject "Privacy Request". See <a href="privacy.html#access">Privacy Policy §8</a> for full details.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Cypaction Pty Limited</strong> (ACN 008 650 664) &nbsp;·&nbsp;
+  <a href="index.html">Home</a> &nbsp;·&nbsp;
+  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="support.html">Support</a> &nbsp;·&nbsp;
+  <a href="mailto:hq@cypaction.org">hq@cypaction.org</a></p>
+  <p style="font-size:0.75rem; color:#aaa;">This site collects standard web server logs (IP address, browser type, pages visited) for security and performance. &copy; 2026 Cypaction Pty Limited.</p>
+</footer>
+
 </body>
 </html>
